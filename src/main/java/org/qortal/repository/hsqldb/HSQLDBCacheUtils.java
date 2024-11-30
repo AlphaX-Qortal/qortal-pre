@@ -463,7 +463,7 @@ public class HSQLDBCacheUtils {
         };
 
         // wait 5 minutes
-        timer.scheduleAtFixedRate(task, 300_000, frequency * 60_000);
+        timer.scheduleAtFixedRate(task, 300_000, frequency * 60_000L);
     }
 
     /**
