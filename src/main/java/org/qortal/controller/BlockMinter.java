@@ -233,7 +233,7 @@ public class BlockMinter extends Thread {
 						byte[] previousBlockMinter = previousBlockData.getMinterPublicKey();
 						boolean mintedLastBlock = mintingAccountsData.stream().anyMatch(mintingAccount -> Arrays.equals(mintingAccount.getPublicKey(), previousBlockMinter));
 						if (mintedLastBlock && !isSingleNodeTestnet) {
-							LOGGER.trace(String.format("One of our keys signed the last block, so we won't sign the next one"));
+							LOGGER.trace("One of our keys signed the last block, so we won't sign the next one");
 							continue;
 						}
 
@@ -436,11 +436,7 @@ public class BlockMinter extends Thread {
 								// Notify Controller
 								repository.discardChanges(); // clear transaction status to prevent deadlocks
 								Controller.getInstance().onNewBlock(newBlock.getBlockData());
-							} catch (DataException e) {
-								// Unable to process block - report and discard
-								LOGGER.error("Unable to process newly minted block?", e);
-								newBlocks.clear();
-							} catch (ArithmeticException e) {
+							} catch (DataException | ArithmeticException e) {
 								// Unable to process block - report and discard
 								LOGGER.error("Unable to process newly minted block?", e);
 								newBlocks.clear();
@@ -474,7 +470,7 @@ public class BlockMinter extends Thread {
 	 * <p>
 	 * NOTE: calls Transaction.getUnconfirmedTransactions which discards uncommitted
 	 * repository changes.
-	 * 
+	 *
 	 * @param repository
 	 * @param newBlock
 	 * @throws DataException
@@ -681,5 +677,4 @@ public class BlockMinter extends Thread {
 
 		logFunction.run();
 	}
-
 }
