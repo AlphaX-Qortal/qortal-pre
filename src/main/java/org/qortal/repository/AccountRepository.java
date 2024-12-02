@@ -77,6 +77,15 @@ public interface AccountRepository {
 	 */
 	public void setBlocksMintedAdjustment(AccountData accountData) throws DataException;
 
+	/**
+	 * Sets blocks minted adjustments for a given list of accounts.
+	 * This replaces the existing values rather than modifying them by a delta.
+	 *
+	 * @param accountAdjustments
+	 * @throws DataException
+	 */
+	public void updateBlocksMintedAdjustments(Set<AccountBlocksMintedAdjustmentData> accountAdjustments) throws DataException;
+
 	/** Returns account's minted block count or null if account not found. */
 	public Integer getMintedBlockCount(String address) throws DataException;
 

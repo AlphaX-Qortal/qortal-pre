@@ -85,6 +85,7 @@
 		"stepsPerFunctionCall": 10,
 		"minutesPerBlock": 1
 	},
+	"blocksMintedAdjustmentHash": "AQmvTa3fT9sMmWnE19W5tkLgeBDzVnYBrMhmn6JPSqpc",
 	"featureTriggers": {
 		"atFindNextTransactionFix": 275000,
 		"newBlockSigHeight": 320000,
@@ -113,10 +114,12 @@
 		"onlyMintWithNameHeight": 1900300,
 		"removeOnlyMintWithNameHeight": 1935500,
 		"groupMemberCheckHeight": 1902700,
-		"fixBatchRewardHeight": 1945900
+		"fixBatchRewardHeight": 1945900,
+		"blocksMintedAdjustmentHHeight": 9999999
 	},
 	"checkpoints": [
-		{ "height": 1136300, "signature": "3BbwawEF2uN8Ni5ofpJXkukoU8ctAPxYoFB7whq9pKfBnjfZcpfEJT4R95NvBDoTP8WDyWvsUvbfHbcr9qSZuYpSKZjUQTvdFf6eqznHGEwhZApWfvXu6zjGCxYCp65F4jsVYYJjkzbjmkCg5WAwN5voudngA23kMK6PpTNygapCzXt" }
+		{ "height": 1136300, "signature": "3BbwawEF2uN8Ni5ofpJXkukoU8ctAPxYoFB7whq9pKfBnjfZcpfEJT4R95NvBDoTP8WDyWvsUvbfHbcr9qSZuYpSKZjUQTvdFf6eqznHGEwhZApWfvXu6zjGCxYCp65F4jsVYYJjkzbjmkCg5WAwN5voudngA23kMK6PpTNygapCzXt" },
+		{ "height": 1950000, "signature": "Sh8rN7zandCBpkEMSEDCChp2aFMJo6X199wyrkZEbZcveBv2zBV89uNx3VYZqSmvPaNKxN6kVHAMBLW7dV76sU17UBmiHsCCFPZ4ohe9QrKq43A4h1QtEnnpZa3PRu9vY8iKmrLQMkUSQovnVKtL86cC2gDhfG4n3QoNxBvCUF5GS9V" }
 	],
 	"genesisInfo": {
 		"version": 4,

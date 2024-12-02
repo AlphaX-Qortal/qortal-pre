@@ -125,7 +125,7 @@ public class TransferPrivsTransaction extends Transaction {
 
 		AccountData senderData = accountRepository.getAccount(sender.getAddress());
 		int sendersBlocksMinted = senderData.getBlocksMinted();
-		int sendersBlocksMintedAdjustment = senderData.getBlocksMintedAdjustment();
+		int sendersBlocksMintedAdjustment = 0;
 
 		AccountData recipientData = accountRepository.getAccount(recipient.getAddress());
 		int recipientBlocksMinted = recipientData != null ? recipientData.getBlocksMinted() : 0;

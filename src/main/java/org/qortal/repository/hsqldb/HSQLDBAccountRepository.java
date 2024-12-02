@@ -349,6 +349,7 @@ public class HSQLDBAccountRepository implements AccountRepository {
 			throw new DataException("Unable to fetch account's block minted penalty count from repository", e);
 		}
 	}
+
 	public void updateBlocksMintedPenalties(Set<AccountPenaltyData> accountPenalties) throws DataException {
 		// Nothing to do?
 		if (accountPenalties == null || accountPenalties.isEmpty())
@@ -366,6 +367,26 @@ public class HSQLDBAccountRepository implements AccountRepository {
 			this.repository.executeCheckedBatchUpdate(sql, updateBlocksMintedPenaltyParams);
 		} catch (SQLException e) {
 			throw new DataException("Unable to set blocks minted penalties in repository", e);
+		}
+	}
+
+	public void updateBlocksMintedAdjustments(Set<AccountBlocksMintedAdjustmentData> accountAdjustments) throws DataException {
+		// Nothing to do?
+		if (accountAdjustments == null || accountAdjustments.isEmpty())
+			return;
+
+		// Map adjustment changes into SQL bind params, filtering out no-op changes
+		List<Object[]> updateBlocksMintedAdjustmentParams = accountAdjustments.stream()
+				.map(accountAdjustment -> new Object[] { accountAdjustment.getAddress(), accountAdjustment.getBlocksMintedAdjustment(), accountAdjustment.getBlocksMintedAdjustment() })
+				.collect(Collectors.toList());
+
+		// Perform actual adjustment changes
+		String sql = "INSERT INTO Accounts (account, blocks_minted_adjustment) VALUES (?, ?) " +
+				"ON DUPLICATE KEY UPDATE blocks_minted_adjustment = blocks_minted_adjustment + ?";
+		try {
+			this.repository.executeCheckedBatchUpdate(sql, updateBlocksMintedAdjustmentParams);
+		} catch (SQLException e) {
+			throw new DataException("Unable to set blocks minted adjustments in repository", e);
 		}
 	}
 

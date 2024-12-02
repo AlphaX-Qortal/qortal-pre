@@ -1616,6 +1616,8 @@ public class Block {
 					SelfSponsorshipAlgoV2Block.processAccountPenalties(this);
 				} else if (this.blockData.getHeight() == BlockChain.getInstance().getSelfSponsorshipAlgoV3Height()) {
 					SelfSponsorshipAlgoV3Block.processAccountPenalties(this);
+				} else if (this.blockData.getHeight() == BlockChain.getInstance().getBlocksMintedAdjustmentHHeight()) {
+					RunBlocksMintedAdjustment.processBlocksMintedAdjustment(this);
 				}
 			}
 		}
@@ -1918,6 +1920,8 @@ public class Block {
 					SelfSponsorshipAlgoV2Block.orphanAccountPenalties(this);
 				} else if (this.blockData.getHeight() == BlockChain.getInstance().getSelfSponsorshipAlgoV3Height()) {
 					SelfSponsorshipAlgoV3Block.orphanAccountPenalties(this);
+				} else if (this.blockData.getHeight() == BlockChain.getInstance().getBlocksMintedAdjustmentHHeight()) {
+					RunBlocksMintedAdjustment.orphanBlocksMintedAdjustment(this);
 				}
 			}
 

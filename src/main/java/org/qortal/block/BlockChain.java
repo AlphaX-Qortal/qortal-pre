@@ -88,7 +88,8 @@ public class BlockChain {
 		onlyMintWithNameHeight,
 		removeOnlyMintWithNameHeight,
 		groupMemberCheckHeight,
-		fixBatchRewardHeight
+		fixBatchRewardHeight,
+		blocksMintedAdjustmentHHeight
 	}
 
 	// Custom transaction fees
@@ -252,7 +253,7 @@ public class BlockChain {
 	 * data and to base online accounts decisions on. */
 	private int blockRewardBatchAccountsBlockCount;
 
-	private String penaltyFixHash;
+	private String blocksMintedAdjustmentHash;
 
 	/** Max reward shares by block height */
 	public static class MaxRewardSharesByTimestamp {
@@ -427,8 +428,8 @@ public class BlockChain {
 		return this.blockRewardBatchAccountsBlockCount;
 	}
 
-	public String getPenaltyFixHash() {
-		return this.penaltyFixHash;
+	public String getBlocksMintedAdjustmentHash() {
+		return this.blocksMintedAdjustmentHash;
 	}
 
 	// Self sponsorship algo V1
@@ -660,6 +661,10 @@ public class BlockChain {
 
 	public int getFixBatchRewardHeight() {
 		return this.featureTriggers.get(FeatureTrigger.fixBatchRewardHeight.name()).intValue();
+	}
+
+	public int getBlocksMintedAdjustmentHHeight() {
+		return this.featureTriggers.get(FeatureTrigger.blocksMintedAdjustmentHHeight.name()).intValue();
 	}
 
 	// More complex getters for aspects that change by height or timestamp
